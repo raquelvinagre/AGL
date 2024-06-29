@@ -1,0 +1,11 @@
+view : View with {
+    width = 601;
+    height = 601;
+    title = "Illustrating the minimum level graphical models";
+    background = "alice blue";
+}
+
+vectorA : Vector = (1,1);
+vectorB : Vector = (1,-5);
+vectorTeste : Vector = (0pi:5);
+vectorTesteA : Vector = (0pi:-5);

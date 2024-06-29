@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Ensure a valid example number is provided
+if [ -z "$1" ]; then
+  echo "Usage: ./run.sh exN [grammar]"
+  echo "OR ./run.sh build"
+  exit 1
+fi
+
+# If the argument is "build", run antlr4 build process
+if [ "$1" = "build" ]; then
+  echo "Running antlr4 build..."
+  antlr4-build
+  exit 0
+fi
+
+# If the argument is in the form exN grammar, run antlr4-test
+if [ "$2" = "grammar" ]; then
+  EXAMPLE_NUM=$1
+  EXAMPLE_FILE="../examples/${EXAMPLE_NUM}.agl"
+  
+  if [ ! -f "$EXAMPLE_FILE" ]; then
+    echo "Example file $EXAMPLE_FILE not found!"
+    exit 1
+  fi
+  
+  echo "Running antlr4-test for grammar $EXAMPLE_NUM..."
+  antlr4-test agl program -gui "$EXAMPLE_FILE"
+  exit 0
+fi
+
+# Run the specified example
+EXAMPLE_NUM=$1
+EXAMPLE_FILE="../examples/${EXAMPLE_NUM}.agl"
+
+if [ ! -f "$EXAMPLE_FILE" ]; then
+  echo "Example file $EXAMPLE_FILE not found!"
+  exit 1
+fi
+
+# Execute the example
+echo "Running example $EXAMPLE_NUM..."
+cat "$EXAMPLE_FILE" | antlr4-run 
+python3 output.py

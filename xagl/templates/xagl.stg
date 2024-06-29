@@ -1,0 +1,27 @@
+group templates;
+
+program(statements) ::= <<
+import math
+import tkinter as tk
+
+
+# Global variable to help with the wait_variable func
+global helper_var
+helper_var = tk.BooleanVar()
+helper_var.set(False)
+
+
+<statements>
+
+
+>>
+
+
+moveCommand(viewName, objectName, dx, dy) ::= <<
+<viewName>.move(<objectName>, <dx>, <dy>)
+>>
+
+refreshCommand(viewName, delay) ::= <<
+root.update_idletasks()
+root.update()
+>>

@@ -1,0 +1,91 @@
+#(
+    This is a block, possible multiline, comment
+#)
+
+#(
+    This example illustrates the instantiation of a view and all the base graphical models
+    to be implemented in the minimum level.
+#)
+
+#
+# create an instance of a View.
+#
+# A View is a display window where one can capture snapshots of the canvas at a given moment.
+# A View holds a set of intrinsic properties, every one with a type and a default value:
+# - Ox [Number, 0.0], Oy [Number, 0.0] - point of the canvas that appears in the central (sub)pixel of the view window
+# - width [Integer, 201] - number of pixels in a row
+# - height [Integer, 201] - number of pixels in a column
+# - title [String, "No title"] - the main window title
+# - background [String, "black"] - the color of the background
+#
+# The colon (:) is the instantiation operator
+# The equal (=) is the assignment operator
+# The with construction allows to change several properties for the same object.
+#
+view : View with {
+    width = 601;
+    height = 601;
+    title = "Illustrating the minimum level graphical models";
+    background = "tomato";
+}
+
+# 
+# AGL holds a set of primitive data types, every one with a default value:
+# - Integer [0] - integer number
+# - Number [0.0] - integer or real number
+# - String [""] - sequence of characters
+# - Point [(0.0,0.0)] - a point in canvas coordinates
+# - Vector [(0.0,0.0)] - the difference between two points
+# - Vector [(0:1)] - a vector may also be defined using polar coordinates (angle:length).
+# Here, we are instantiating a 'Number'
+#
+cellSize : Number = 200;
+
+# Additional code with lists and loops
+# Create a list of integers
+numbers: List<Integer> = [1, 2, 3, 4, 5];
+
+# Create a list of strings
+colors: List<String> = ["red", "green", "blue"];
+
+# Print the original lists
+print "Original numbers list:";
+print numbers;
+
+print "Original colors list:";
+print colors;
+
+# Modify elements in the lists
+numbers[2] = 10;
+colors[1] = "yellow";
+
+# Print the modified lists
+print "Modified numbers list:";
+print numbers;
+
+print "Modified colors list:";
+print colors;
+
+# Iterate over the numbers list and print each number
+print "Iterating over numbers list:";
+for i in 0..4 do {
+    print numbers[i];
+}
+
+# Iterate over the colors list and print each color
+print "Iterating over colors list:";
+for i in 0..2 do {
+    print colors[i];
+}
+
+index: Integer = 0;
+
+# While loop to modify the list
+while index < 5 do {
+    numbers[index] = numbers[index] * 2;
+    index = index + 1;
+}
+
+# Print the modified list
+print "Modified numbers list:";
+print numbers;

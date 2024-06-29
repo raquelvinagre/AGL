@@ -1,0 +1,47 @@
+
+#
+# create an instance of a View, at the beginning of the strip
+#
+#
+view : View with {
+    width = 401;
+    height = 401;
+    title = "Illustrating the rectangle shape";
+    background = "wheat";
+}
+
+
+pacman : PieSlice at (0,0) with {
+    length = (50,50);
+    fill = "pink";
+    start = 30;
+    extent = 300;
+}
+
+#
+# Instantiate a Pacman, with the default property values
+#
+
+#
+# The refresh view command makes the graphics appear
+#
+refresh view;
+
+#
+# Animation may be given by a script written in the secondary language
+#
+abba : Script = load "s0.xagl";
+play abba with {
+    v = view;
+    m = pacman;
+
+}
+
+
+
+print "Press any mouse button to quit";
+pos : Point = wait mouse click; # instantiate a Point and waits for a mouse click
+
+close view;
+
+
